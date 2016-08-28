@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<ruleset name="nsingapuri">
+    <description>PHP Coding Standard with the balls of squiz minus the annoying parts</description>
+    <!-- Squiz standards provide a rigid base, lets use them -->
+    <rule ref="Squiz">
+        <!-- ignore squiz author requirement -->
+        <exclude name="Squiz.Commenting.FileComment.IncorrectAuthor"/>
+
+        <!-- ignore squiz copyright requirement -->
+        <exclude name="Squiz.Commenting.FileComment.IncorrectCopyright"/>
+
+        <!-- ignore squiz preference of .inc over .php -->
+        <exclude name="Squiz.Files.FileExtension.ClassFound"/>
+
+        <!-- prefer readable inline variables -->
+        <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/>
+
+        <!-- ignore squiz closing declarations (i despise these) -->
+        <exclude name="Squiz.Commenting.ClosingDeclarationComment"/>
+        <exclude name="Squiz.Commenting.LongConditionClosingComment.Missing"/>
+
+        <!-- ignore squiz preference for "=== true" -->
+        <exclude name="Squiz.Operators.ComparisonOperatorUsage.ImplicitTrue"/>
+
+        <!-- ignore squiz preference for "=== false" -->
+        <exclude name="Squiz.Operators.ComparisonOperatorUsage.NotAllowed"/>
+
+        <!-- ignore squiz preference for arrays to line up below declaration -->
+        <exclude name="Squiz.Arrays.ArrayDeclaration.ValueNotAligned"/>
+        <exclude name="Squiz.Arrays.ArrayDeclaration.CloseBraceNotAligned"/>
+
+        <exclude name="Squiz.WhiteSpace.ObjectOperatorSpacing.Before"/>
+        <exclude name="Squiz.ControlStructures.SwitchDeclaration.BreakIndent"/>
+    </rule>
+    <rule ref="Generic.Files.LineLength">
+            <properties>
+            <property name="lineLimit" value="120"/>
+            <property name="absoluteLineLimit" value="120"/>
+        </properties>
+    </rule>
+
+    <!-- lets ignore some rulesets specifically in /tests subdirectory -->
+    <rule ref="Squiz.Classes.ClassDeclaration.MultipleClasses">
+        <!-- allow inline mock doubles -->
+        <exclude-pattern>*/tests/*</exclude-pattern>
+    </rule>
+    <rule ref="Squiz.Classes.ClassFileName.NoMatch">
+        <!-- allow inline mock doubles -->
+        <exclude-pattern>*/tests/*</exclude-pattern>
+    </rule>
+    <rule ref="Squiz.Commenting.VariableComment.Missing">
+        <!-- allow the inline mock doubles to open up variables without unnecessary comments -->
+        <exclude-pattern>*/tests/*</exclude-pattern>
+    </rule>
+    <rule ref="Squiz.Commenting.FunctionComment.Missing">
+        <!-- allow the inline mock doubles to open up methods without unnecessary comments -->
+        <exclude-pattern>*/tests/*</exclude-pattern>
+    </rule>
+</ruleset>
